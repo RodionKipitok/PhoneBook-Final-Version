@@ -12,7 +12,7 @@ const styles = {
   },
 };
 
-export function Home() {
+const Home = () => {
   return (
     <div>
       <h1 style={styles.container}>
@@ -21,4 +21,6 @@ export function Home() {
       </h1>
     </div>
   );
-}
+};
+
+export default Home;

@@ -5,7 +5,7 @@ export default function Contacts({ contacts, funcDelete }) {
     <>
       <h2 className="titleContact">Contacts</h2>
       <ul className="list">
-        {contacts.map(contact => (
+        {[].map(contact => (
           <li className="contactItem" key={contact.id}>
             {contact.name} {contact.number}{' '}
             <button
