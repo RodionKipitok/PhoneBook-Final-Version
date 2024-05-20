@@ -1,7 +1,7 @@
 export function LoginForm() {
-  const handlerChange = () => {};
+  // const handlerChange = () => {};
 
-  const handlerSubmit = () => {};
+  // const handlerSubmit = () => {};
 
   return (
     <form action="">

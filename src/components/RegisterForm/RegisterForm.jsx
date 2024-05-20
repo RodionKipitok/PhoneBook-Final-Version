@@ -1,7 +1,7 @@
 export default function RegisterForm() {
-  const handlerChange = () => {};
+  // const handlerChange = () => {};
 
-  const handlerSubmit = () => {};
+  // const handlerSubmit = () => {};
   return (
     <form action="">
       <label htmlFor="">User name</label>
