@@ -1,3 +1,3 @@
-export const selectorIsLoggedIn = state.auth.isLooggedIn;
-export const selectorUser = state.auth.user;
-export const selectorIsRefreshing = state.auth.isRefreshing;
+export const selectorIsLoggedIn = state => state.auth.isLoggedIn;
+export const selectorUser = state => state.auth.user;
+export const selectorIsRefreshing = state => state.auth.isRefreshing;
