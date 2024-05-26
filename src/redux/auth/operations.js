@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
 // Utility to add JWT
 const setAuthHeader = token => {
@@ -39,7 +39,7 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     console.log(credentials);
     try {
-      const res = await axios.post('/user/login', credentials);
+      const res = await axios.post('/users/login', credentials);
       // After successful login , add the token to the HTTP header
       setAuthHeader(res.data.token);
       return res.data;
@@ -48,3 +48,20 @@ export const logIn = createAsyncThunk(
     }
   }
 );
+
+/*
+ * POST @ /users/logout
+ * headers: Authorization: Bearer token
+ */
+
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+  try {
+    const res = await axios.post('/users/logout');
+    // After a successful logout, remove the token from the HTTP header
+    clearAuthHeader();
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+// fder323dzd
