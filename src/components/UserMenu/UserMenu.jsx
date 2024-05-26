@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/auth/operations';
 export const UserMenu = () => {
   const dispatch = useDispatch();
+  console.log(logOut);
 
   const handlerLogOut = () => dispatch(logOut());
 

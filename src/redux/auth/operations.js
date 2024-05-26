@@ -19,17 +19,18 @@ const clearAuthHeader = () => {
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
-    console.log(credentials);
     try {
-      const res = await axios.post('/users/signup', credentials);
-      // After successful registration ,add the token to the HHTP header
-      setAuthHeader(res.data.token);
-      return res.data;
+      const { data } = await axios.post('/users/signup', credentials);
+      setAuthHeader(data.token);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
+// fdgnjd@gmail.com
+// gfnj3134
 
 // POST @ /users/login
 // body:{email,password}
@@ -56,12 +57,26 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    const res = await axios.post('/users/logout');
-    // After a successful logout, remove the token from the HTTP header
+    await axios.post('/users/logout');
     clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
 
-// fder323dzd
+// export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+//   try {
+//     const token = thunkAPI.getState().auth.token;
+//     console.log(token);
+//     const config = {
+//       headers: {
+//         Authorization: `Bearer ${token}`, // Включение токена в заголовок запроса
+//       },
+//     };
+//     const res = await axios.post('/users/logout', config);
+//     // After a successful logout, remove the token from the HTTP header
+//     clearAuthHeader();
+//   } catch (error) {
+//     return thunkAPI.rejectWithValue(error.message);
+//   }
+// });
